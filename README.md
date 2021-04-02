@@ -1,6 +1,6 @@
 # colors_vqa
 
-This is the code repository for VQA Color Images (), which is used to develop a model and Visual Question Answering Dataset around Color Images.
+This is the code repository for VQA Color Images (https://github.com/mathaix/colors_vqa/blob/main/Pragmatic_Visual_Question_Answering_on_Color_Images.pdf), which is used to develop a model and Visual Question Answering Dataset around Color Images.
 Correctly answering the question requires the model to show understanding of the underlying context ie Pragmatics or Grounding. This dataset and model is targeted at Machine Learning Students/Enthusiasts trying to build their intuitions around DeepLearning,VQA concepts, Multi-Task learning and MultiModal Architectures. The ColorImages dataset is a simple but still challenging dataset because the language of color is rich and nuanced. However it is easier to  reason compared to the complexity around models built around VQA datasets from  \cite{agrawal2015vqa} and \cite{DBLP:journals/corr/abs-1902-09506} which are more research oriented. 
 
 ## Getting Started
