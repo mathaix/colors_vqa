@@ -359,17 +359,6 @@ class VQAEncoderDecoder(nn.Module):
 
             preds = []
 
-            """
-            questions = [self._tokenize_sentence(s) for s in questions]
-            question_seqs = []
-            question_seqs = [[self.word2index.get(w, self.unk_index) for w in seq] for seq in questions]
-            question_seqs = [torch.LongTensor(seq) for seq in question_seqs]
-            question_seqs = torch.nn.utils.rnn.pad_sequence(question_seqs, batch_first=True)
-            question_lens = [len(seq) for seq in question_seqs]
-            question_lengths = torch.LongTensor(question_lens)
-            """
-
-
             with torch.no_grad():
                 # Get the hidden representations from the color contexts:
                 image_hidden = self.encoder(color_images)
@@ -542,7 +531,7 @@ def build_optimizer( model, eta = 0.001, l2_strength = 0):
 def train():
     batch_size = 64
     test_split = 0.7
-    epochs = 100
+    epochs = 10
     loss_fn = nn.CrossEntropyLoss()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -550,12 +539,12 @@ def train():
     data = ColorsVqaDataSet("data", "colors.csv")
     dataset_size = len(data)
 
+    # Bakeoff dataset using to evaluate listner accuracy.
     COLORS_BAKEOFF_SRC_FILENAME = os.path.join(
     "data",  "cs224u-colors-bakeoff-data.csv")
 
     bakeoff_corpus = ColorsCorpusReader(COLORS_BAKEOFF_SRC_FILENAME)
 
-    # This code just extracts the colors and texts from the new corpus:
     bakeoff_rawcols, bakeoff_texts = zip(*[
     [ex.colors, ex.contents] for ex in bakeoff_corpus.read()])
     
@@ -579,7 +568,7 @@ def train():
     if os.path.isfile(checkpoint_fpath):
         model, optimizer, start_epoch = load_ckp(checkpoint_fpath, model, optimizer)   
 
-    print(model.evaluate(bakeoff_rawcols, bakeoff_texts, device=None)) 
+    #print(model.evaluate(bakeoff_rawcols, bakeoff_texts, device=None)) 
 
     for epoch in range(start_epoch,epochs):
         print(f"Epoch {epoch+1}\n-------------------------------")
@@ -590,7 +579,8 @@ def train():
                     'optimizer': optimizer.state_dict()
                 }
         save_ckp(checkpoint)
-        #print(model.evaluate(bakeoff_rawcols, bakeoff_texts, device=None))
+        
+    print(model.evaluate(bakeoff_rawcols, bakeoff_texts, device=None))
 
     return model
 
