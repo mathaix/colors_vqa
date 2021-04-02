@@ -1,5 +1,17 @@
 # colors_vqa
 
+This is the code repository for VQA Color Images (), which is used to develop a model and Visual Question Answering Dataset around Color Images.
+Correctly answering the question requires the model to show understanding of the underlying context ie Pragmatics or Grounding. This dataset and model is targeted at Machine Learning Students/Enthusiasts trying to build their intuitions around DeepLearning,VQA concepts, Multi-Task learning and MultiModal Architectures. The ColorImages dataset is a simple but still challenging dataset because the language of color is rich and nuanced. However it is easier to  reason compared to the complexity around models built around VQA datasets from  \cite{agrawal2015vqa} and \cite{DBLP:journals/corr/abs-1902-09506} which are more research oriented. 
+
+## Getting Started
+1. Install Software Dependencies listed below. 
+2. Clone this repository
+3. cd in the folder and download the dataset. (wget https://storage.googleapis.com/vqamodel-mathaix/vqa.tar.gz)
+4. Untar (tar -xvzf vqa.tar.gz)
+5. Train the model by running "colors_vqa_model.py". It took roughly 8hrs on a Mac to run 10 Ephocs. Running the evaluation also takes time, roughly an hour. 
+6. See the following Notebook to get better understanding of the data and how use the Model. (VisualQuestionAnsweringonColors.ipynb)
+7. The following file is responsible for generating data color_images.py. 
+
 
 
 ## Dependencies
