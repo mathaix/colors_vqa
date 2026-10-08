@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.svg" width="160" alt="colors_vqa logo">
+</p>
+
 # colors_vqa
 
 This is the code repository for VQA Color Images (https://github.com/mathaix/colors_vqa/blob/main/Pragmatic_Visual_Question_Answering_on_Color_Images.pdf), which is used to develop a model and Visual Question Answering Dataset around Color Images.
